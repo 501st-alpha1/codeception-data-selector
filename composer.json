@@ -1,0 +1,12 @@
+{
+    "name": "501st-alpha1/codeception-data-selector",
+    "description": "A Codeception extension to automatically select data from DB based on certain conditions.",
+    "license": "GNU GPL v3",
+    "authors": [
+        {
+            "name": "Scott Weldon",
+            "email": "scott@scott-weldon.com"
+        }
+    ],
+    "require": {}
+}
