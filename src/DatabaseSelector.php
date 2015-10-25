@@ -1,4 +1,5 @@
 <?php
+namespace 501st-alpha1\codeception-data-selector;
 
 use \Codeception\Lib\Driver\Db;
 
