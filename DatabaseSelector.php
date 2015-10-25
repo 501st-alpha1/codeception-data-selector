@@ -3,6 +3,19 @@
 use \Codeception\Lib\Driver\Db;
 
 class DatabaseSelector extends Db {
+  public function query($table, $fields, $joins, $conditions) {
+    $join = $this->generateJoinClause($joins);
+    $where = $this->generateWhereClause($conditions);
+
+    if (is_array($fields))
+      $fields = implode(',', $fields);
+
+    $query = "SELECT %s FROM %s %s %s";
+
+    return sprintf($query, $fields, $this->getQuotedName($table), $joins,
+                   $where);
+  }
+
   protected function generateJoinClause(array &$criteria) {
     if (empty($criteria))
       return "";
