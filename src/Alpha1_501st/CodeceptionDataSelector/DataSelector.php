@@ -1,7 +1,7 @@
 <?php
 namespace Alpha1_501st\CodeceptionDataSelector;
 
-use \Codeception\Event\TestEvent;
+use \Codeception\Event\SuiteEvent;
 use \Codeception\Extension;
 
 class DataSelector extends Extension {
@@ -9,7 +9,7 @@ class DataSelector extends Extension {
     'suite.before'=>'beforeSuite',
   ];
 
-  public function beforeSuite(TestEvent $e) {
+  public function beforeSuite(SuiteEvent $e) {
     $db = new DatabaseSelector;
 
     foreach ($this->config as $group => $value) {
