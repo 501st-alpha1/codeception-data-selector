@@ -10,7 +10,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "501st-alpha1\\": "src"
+            "Alpha1-501st\\": "src"
         }
     },
     "require": {}

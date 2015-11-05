@@ -1,5 +1,5 @@
 <?php
-namespace 501st-alpha1\codeception-data-selector;
+namespace Alpha1_501st\codeception-data-selector;
 
 final class DataFactory {
   public static function make() {
