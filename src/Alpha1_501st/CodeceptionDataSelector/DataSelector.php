@@ -10,7 +10,10 @@ class DataSelector extends Extension {
   ];
 
   public function beforeSuite(SuiteEvent $e) {
-    $db = new DatabaseSelector;
+    $dsn = $this->config['dsn'];
+    $user = $this->config['user'];
+    $password = $this->config['password'];
+    $db = new DatabaseSelector($dsn, $user, $password);
 
     foreach ($this->config['data'] as $group => $value) {
       $data = DataFactory::make();
