@@ -13,8 +13,10 @@ class DatabaseSelector extends Db {
 
     $query = "SELECT %s FROM %s %s %s";
 
-    return sprintf($query, $fields, $this->getQuotedName($table), $join,
-                   $where);
+    $query = sprintf($query, $fields, $this->getQuotedName($table), $join,
+                     $where);
+
+    return $this->sqlQuery($query);
   }
 
   protected function generateWhereClause(array &$criteria) {
