@@ -13,5 +13,7 @@
             "Alpha1_501st\\": "src"
         }
     },
-    "require": {}
+    "require": {
+        "codeception/codeception": "2.0.*"
+    }
 }
