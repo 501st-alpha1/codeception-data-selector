@@ -17,6 +17,18 @@ class DatabaseSelector extends Db {
                    $where);
   }
 
+  protected function generateWhereClause(array &$criteria) {
+    if (empty($criteria))
+      return "";
+
+    $where = "WHERE ";
+    foreach ($criteria as $column => $value) {
+      $where .= $column." = ".$value." AND ";
+    }
+
+    return substr($where, 0, -5);
+  }
+
   protected function generateJoinClause(array &$criteria) {
     if (empty($criteria))
       return "";
