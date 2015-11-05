@@ -2,7 +2,7 @@
 namespace Alpha1_501st\CodeceptionDataSelector;
 
 use \Codeception\Event\SuiteEvent;
-use \Codeception\Extension;
+use \Codeception\Platform\Extension;
 
 class DataSelector extends Extension {
   public static $events = [
