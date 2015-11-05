@@ -13,7 +13,7 @@ class DatabaseSelector extends Db {
 
     $query = "SELECT %s FROM %s %s %s";
 
-    return sprintf($query, $fields, $this->getQuotedName($table), $joins,
+    return sprintf($query, $fields, $this->getQuotedName($table), $join,
                    $where);
   }
 
