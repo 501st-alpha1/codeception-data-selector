@@ -12,7 +12,7 @@ class DataSelector extends Extension {
   public function beforeSuite(SuiteEvent $e) {
     $db = new DatabaseSelector;
 
-    foreach ($this->config as $group => $value) {
+    foreach ($this->config['data'] as $group => $value) {
       $data = DataFactory::make();
       $data->$group = new stdClass;
 
