@@ -37,7 +37,7 @@ class DatabaseSelector extends Db {
 
     $out = "";
     foreach ($criteria as $table => $fields) {
-      $out .= "LEFT JOIN ".$table." ON ".$fields[0]." = ".$fields[1];
+      $out .= " LEFT JOIN ".$table." ON ".$fields[0]." = ".$fields[1];
     }
 
     return $out;
