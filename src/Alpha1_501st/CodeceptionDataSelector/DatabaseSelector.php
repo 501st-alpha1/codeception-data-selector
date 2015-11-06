@@ -27,6 +27,16 @@ namespace Alpha1_501st\CodeceptionDataSelector;
 use \Codeception\Lib\Driver\Db;
 
 class DatabaseSelector extends Db {
+  /**
+   * Select some values from the database.
+   *
+   * @param string       $table      The table to select from.
+   * @param array|string $fields     The field or fields to be selected.
+   * @param array        $conditions The conditions to apply.
+   * @param array        $joins      Additional tables to join.
+   *
+   * @return array
+   */
   public function query($table, $fields, $conditions, $joins = []) {
     $join = $this->generateJoinClause($joins);
     $where = $this->generateWhereClause($conditions);
