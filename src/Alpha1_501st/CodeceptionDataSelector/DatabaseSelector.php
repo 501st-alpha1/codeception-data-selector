@@ -16,7 +16,12 @@ class DatabaseSelector extends Db {
     $query = sprintf($query, $fields, $this->getQuotedName($table), $join,
                      $where);
 
-    return $this->sqlQuery($query);
+    $pdoStatement = $this->getDbh()->prepare($query);
+    $pdoStatement->execute([]);
+
+    $row = $pdoStatement->fetch();
+
+    return $row;
   }
 
   protected function generateWhereClause(array &$criteria) {
