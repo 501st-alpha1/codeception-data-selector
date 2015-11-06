@@ -46,7 +46,7 @@ class DataSelector extends Extension {
       if (isset($value['joins']))
         $joins = $value['joins'];
       else
-        $joins = null;
+        $joins = [];
 
       $result = $db->query($value['table'], $value['fields'],
                            $value['conditions'], $joins);
