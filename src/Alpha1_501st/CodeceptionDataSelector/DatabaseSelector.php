@@ -27,7 +27,7 @@ namespace Alpha1_501st\CodeceptionDataSelector;
 use \Codeception\Lib\Driver\Db;
 
 class DatabaseSelector extends Db {
-  public function query($table, $fields, $joins, $conditions) {
+  public function query($table, $fields, $conditions, $joins) {
     $join = $this->generateJoinClause($joins);
     $where = $this->generateWhereClause($conditions);
 

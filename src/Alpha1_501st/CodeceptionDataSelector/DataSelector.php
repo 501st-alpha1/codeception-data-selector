@@ -43,8 +43,8 @@ class DataSelector extends Extension {
       $data = DataFactory::make();
       $data->$group = new stdClass;
 
-      $result = $db->query($value['table'], $value['fields'], $value['joins'],
-                           $value['conditions']);
+      $result = $db->query($value['table'], $value['fields'],
+                           $value['conditions'], $value['joins']);
       foreach ($result as $field => $value) {
         $data->$group->$field = $value;
       }
