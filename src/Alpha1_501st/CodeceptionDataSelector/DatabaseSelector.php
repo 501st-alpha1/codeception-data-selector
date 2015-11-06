@@ -11,7 +11,7 @@ class DatabaseSelector extends Db {
     if (is_array($fields))
       $fields = implode(',', $fields);
 
-    $query = "SELECT %s FROM %s %s %s";
+    $query = "SELECT %s FROM %s %s %s LIMIT 1";
 
     $query = sprintf($query, $fields, $this->getQuotedName($table), $join,
                      $where);
