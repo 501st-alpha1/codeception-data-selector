@@ -30,10 +30,10 @@ class DatabaseSelector extends Db {
   /**
    * Select some values from the database.
    *
-   * @param string       $table      The table to select from.
-   * @param array|string $fields     The field or fields to be selected.
-   * @param array        $conditions The conditions to apply.
-   * @param array        $joins      Additional tables to join.
+   * @param  string       $table      The table to select from.
+   * @param  array|string $fields     The field or fields to be selected.
+   * @param  array        $conditions The conditions to apply.
+   * @param  array        $joins      Additional tables to join.
    *
    * @return array
    */
