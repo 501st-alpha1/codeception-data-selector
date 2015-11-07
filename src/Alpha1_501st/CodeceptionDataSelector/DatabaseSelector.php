@@ -57,6 +57,13 @@ class DatabaseSelector extends Db {
     return $row;
   }
 
+  /**
+   * Generate a WHERE clause for a database query.
+   *
+   * @param  array  $criteria The conditions to apply.
+   *
+   * @return string
+   */
   protected function generateWhereClause(array &$criteria) {
     if (empty($criteria))
       return "";
@@ -69,6 +76,13 @@ class DatabaseSelector extends Db {
     return substr($where, 0, -5);
   }
 
+  /**
+   * Generate LEFT JOIN clauses for a database query.
+   *
+   * @param  array  $criteria The tables to join.
+   *
+   * @return string
+   */
   protected function generateJoinClause(array &$criteria) {
     if (empty($criteria))
       return "";
