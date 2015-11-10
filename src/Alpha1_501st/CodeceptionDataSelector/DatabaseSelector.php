@@ -26,6 +26,12 @@ namespace Alpha1_501st\CodeceptionDataSelector;
 
 use \Codeception\Lib\Driver\Db;
 
+/**
+ * Provides database access.
+ *
+ * The class extends Codeception's database driver to provide some additional
+ * functionality, including the use of `JOIN` statements.
+ */
 class DatabaseSelector extends Db {
   /**
    * Select some values from the database.

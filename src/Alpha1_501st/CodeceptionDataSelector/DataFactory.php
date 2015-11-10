@@ -24,6 +24,9 @@
  */
 namespace Alpha1_501st\CodeceptionDataSelector;
 
+/**
+ * Data singleton.
+ */
 final class DataFactory {
   public static function make() {
     static $inst = null;

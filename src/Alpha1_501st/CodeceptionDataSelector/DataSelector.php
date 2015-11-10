@@ -28,6 +28,9 @@ use \Codeception\Event\SuiteEvent;
 use \Codeception\Platform\Extension;
 use stdClass;
 
+/**
+ * DataSelector main plugin.
+ */
 class DataSelector extends Extension {
   public static $events = [
     'suite.before'=>'beforeSuite',
