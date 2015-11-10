@@ -32,10 +32,18 @@ use stdClass;
  * DataSelector main plugin.
  */
 class DataSelector extends Extension {
+  /**
+   * @var array The Codeception events to listen to.
+   */
   public static $events = [
     'suite.before'=>'beforeSuite',
   ];
 
+  /**
+   * Load test data before suite is run.
+   *
+   * @param SuiteEvent $e The before-suite event.
+   */
   public function beforeSuite(SuiteEvent $e) {
     $dsn = $this->config['dsn'];
     $user = $this->config['user'];
