@@ -42,13 +42,15 @@ final class DataFactory {
     return $inst;
   }
 
-  private function __construct() {
-    // Thou shalt not construct this singleton!
-  }
+  /**
+   * Thou shalt not construct this singleton!
+   */
+  private function __construct() {}
 
-  private function __clone() {
-    // Thou shalt not clone this singleton!
-  }
+  /**
+   * Thou shalt not clone this singleton!
+   */
+  private function __clone() {}
 }
 
 ?>
