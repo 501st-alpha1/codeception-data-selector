@@ -76,7 +76,10 @@ class DatabaseSelector extends Db {
 
     $where = "WHERE ";
     foreach ($criteria as $column => $value) {
-      $where .= $column." = ".$value." AND ";
+      $where .= $column;
+      $where .= " = ".$value;
+
+      $where .= " AND ";
     }
 
     return substr($where, 0, -5);
