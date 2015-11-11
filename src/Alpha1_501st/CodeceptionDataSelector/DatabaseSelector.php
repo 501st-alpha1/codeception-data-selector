@@ -77,7 +77,13 @@ class DatabaseSelector extends Db {
     $where = "WHERE ";
     foreach ($criteria as $column => $value) {
       $where .= $column;
-      $where .= " = ".$value;
+
+      if (is_array($value)) {
+        $where .= " ".$value[0]." ".$value[1];
+      }
+      else {
+        $where .= " = ".$value;
+      }
 
       $where .= " AND ";
     }
