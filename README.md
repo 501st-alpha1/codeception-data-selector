@@ -41,3 +41,18 @@ $data = \Alpha1_501st\CodeceptionDataSelector\DataFactory::make();
 ```
 
 And then you can access the `content` field from above via. `$data->var1->content`.
+
+To use a custom comparison operator, instead of `=`, do e.g.:
+
+```yaml
+conditions:
+  users.deleted_at:
+    - 'IS NOT'
+    - 'NULL'
+```
+
+This produces:
+
+```sql
+WHERE users.deleted_at IS NOT NULL
+```
