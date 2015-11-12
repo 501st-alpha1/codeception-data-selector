@@ -9,16 +9,20 @@ Update your `codeception.yml`:
       enabled:
         - \Alpha1_501st\CodeceptionDataSelector\DataSelector
       config:
-        var1:
-          table: 'comments'
-          fields:
-            - content
-          joins:
-            users:
-              - comments.user_id
-              - users.id
-          conditions:
-            users.activated: '1'
+        dsn: 'mysql:host=localhost;dbname=testdb'
+        user: 'root'
+        password: ''
+        data:
+          var1:
+            table: 'comments'
+            fields:
+              - content
+            joins:
+              users:
+                - comments.user_id
+                - users.id
+            conditions:
+              users.activated: '1'
 
 This will produce the following SQL query:
 
