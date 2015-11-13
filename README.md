@@ -60,3 +60,24 @@ This produces:
 ```sql
 WHERE users.deleted_at IS NOT NULL
 ```
+
+### Delete Old Data
+
+To delete old data before every test, do e.g.:
+
+```yaml
+conditions:
+  ...
+deletes:
+  one:
+    table: 'users'
+    conditions:
+      first_name: "Test"
+      last_name: "User"
+```
+
+The name for the deletion (e.g. `one`) is not used, but should be unique for in `deletes`. This example will produce the following SQL:
+
+```sql
+DELETE FROM users WHERE first_name = "Test" AND last_name = "User";
+```
