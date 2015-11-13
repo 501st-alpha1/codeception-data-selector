@@ -109,6 +109,29 @@ class DatabaseSelector extends Db {
 
     return $out;
   }
+
+  /**
+   * Delete some values from the database.
+   *
+   * @param string $table      The table to delete from.
+   * @param array  $conditions The conditions for the deletion.
+   */
+  public function delete($table, $conditions) {
+    $data = DataFactory::make();
+    $wheres = []
+    foreach ($conditions as $field => $value) {
+      $wheres[$field] = $data->$value[0]->$value[1];
+    }
+
+    $where = $this->generateWhereClause($wheres);
+
+    $query = "DELETE FROM %s %s";
+
+    $query = sprintf($query, $table, $where);
+
+    $pdoStatement = $this->getDbh()->prepare($query);
+    $pdoStatement->execute([]);
+  }
 }
 
 ?>
