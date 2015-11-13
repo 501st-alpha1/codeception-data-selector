@@ -66,7 +66,7 @@ WHERE users.deleted_at IS NOT NULL
 To delete old data before every test, do e.g.:
 
 ```yaml
-conditions:
+data:
   ...
 deletes:
   one:
