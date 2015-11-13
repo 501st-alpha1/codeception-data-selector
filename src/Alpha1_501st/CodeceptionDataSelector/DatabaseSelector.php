@@ -117,10 +117,9 @@ class DatabaseSelector extends Db {
    * @param array  $conditions The conditions for the deletion.
    */
   public function delete($table, $conditions) {
-    $data = DataFactory::make();
-    $wheres = []
+    $wheres = [];
     foreach ($conditions as $field => $value) {
-      $wheres[$field] = $data->$value[0]->$value[1];
+      $wheres[$field] = '"'.$value.'"';
     }
 
     $where = $this->generateWhereClause($wheres);
