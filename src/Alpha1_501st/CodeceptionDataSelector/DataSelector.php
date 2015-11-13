@@ -75,6 +75,14 @@ class DataSelector extends Extension {
    * @param TestEvent $e The before-test event.
    */
   public function beforeTest(TestEvent $e) {
+    $dsn = $this->config['dsn'];
+    $user = $this->config['user'];
+    $password = $this->config['password'];
+    $db = new DatabaseSelector($dsn, $user, $password);
+
+    foreach ($this->config['deletes'] as $group => $value) {
+      $db->delete($value['table'], $value['conditions']);
+    }
   }
 }
 
