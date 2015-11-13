@@ -3,6 +3,8 @@ A Codeception extension to automatically select data from DB based on certain co
 
 ## Usage
 
+### Basic
+
 Update your `codeception.yml`:
 
 ```yaml
@@ -41,6 +43,8 @@ $data = \Alpha1_501st\CodeceptionDataSelector\DataFactory::make();
 ```
 
 And then you can access the `content` field from above via. `$data->var1->content`.
+
+### Custom Operators
 
 To use a custom comparison operator, instead of `=`, do e.g.:
 
