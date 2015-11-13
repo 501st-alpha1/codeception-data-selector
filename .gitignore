@@ -1,3 +1,7 @@
 /vendor/
 composer.lock
 /output/
+tests/_output/*
+tests/acceptance/AcceptanceTester.php
+tests/functional/FunctionalTester.php
+tests/unit/UnitTester.php
