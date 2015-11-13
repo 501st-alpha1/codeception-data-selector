@@ -25,6 +25,7 @@
 namespace Alpha1_501st\CodeceptionDataSelector;
 
 use \Codeception\Event\SuiteEvent;
+use \Codeception\Event\TestEvent;
 use \Codeception\Platform\Extension;
 use stdClass;
 
@@ -37,6 +38,7 @@ class DataSelector extends Extension {
    */
   public static $events = [
     'suite.before'=>'beforeSuite',
+    'test.before'=>'beforeTest',
   ];
 
   /**
@@ -65,6 +67,14 @@ class DataSelector extends Extension {
         $data->$group->$field = $value;
       }
     }
+  }
+
+  /**
+   * Wipe/cleanup old data that may have changed during tests.
+   *
+   * @param TestEvent $e The before-test event.
+   */
+  public function beforeTest(TestEvent $e) {
   }
 }
 
