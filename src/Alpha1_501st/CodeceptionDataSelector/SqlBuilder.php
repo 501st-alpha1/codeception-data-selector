@@ -74,6 +74,31 @@ class SqlBuilder {
 
     return $out;
   }
+
+  /**
+   * Generate UPDATE statement for a database query.
+   *
+   * @param string $table    The table to update.
+   * @param array  $sets     The columns/values to update.
+   * @param array  $criteria The criteria to apply the updates to.
+   *
+   * @return string The UPDATE statement.
+   */
+  public static function generateUpdateStatement($table, array $sets,
+                                                 array $criteria) {
+    $where = self::generateWhereClause($criteria);
+
+    $set = "SET ";
+    foreach ($sets as $column => $value) {
+      $set .= $column." = ".$value.", ";
+    }
+    $set = substr($set, 0, -2);
+
+    $query = "UPDATE %s %s %s";
+    $query = sprintf($query, $table, $set, $where);
+
+    return $query;
+  }
 }
 
 ?>
