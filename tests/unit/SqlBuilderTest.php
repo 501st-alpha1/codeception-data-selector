@@ -23,4 +23,14 @@ class SqlBuilderTest extends \Codeception\TestCase\Test {
     $result = 'WHERE first_name = "Test" AND last_name = "User"';
     $this->assertEquals($result, SqlBuilder::generateWhereClause($conditions));
   }
+
+  /**
+   * Test a WHERE with a custom comparison operator.
+   */
+  public function testWhereCustomOp() {
+    $conditions = ['first_name'=>['LIKE', '"%Test%"'],
+                   'last_name'=>'"User"'];
+    $result = 'WHERE first_name LIKE "%Test%" AND last_name = "User"';
+    $this->assertEquals($result, SqlBuilder::generateWhereClause($conditions));
+  }
 }
