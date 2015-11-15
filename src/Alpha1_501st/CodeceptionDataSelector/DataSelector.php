@@ -80,8 +80,10 @@ class DataSelector extends Extension {
     $password = $this->config['password'];
     $db = new DatabaseSelector($dsn, $user, $password);
 
-    foreach ($this->config['deletes'] as $group => $value) {
-      $db->delete($value['table'], $value['conditions']);
+    if (isset($this->config['deletes'])) {
+      foreach ($this->config['deletes'] as $group => $value) {
+        $db->delete($value['table'], $value['conditions']);
+      }
     }
   }
 }
