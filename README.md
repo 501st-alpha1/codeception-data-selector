@@ -1,6 +1,8 @@
 # codeception-data-selector
 A Codeception extension to automatically select data from DB based on certain conditions.
 
+![Travis CI](https://travis-ci.org/501st-alpha1/codeception-data-selector.svg?branch=master)
+
 ## Usage
 
 ### Basic
