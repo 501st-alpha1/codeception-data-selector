@@ -33,4 +33,13 @@ class SqlBuilderTest extends \Codeception\TestCase\Test {
     $result = 'WHERE first_name LIKE "%Test%" AND last_name = "User"';
     $this->assertEquals($result, SqlBuilder::generateWhereClause($conditions));
   }
+
+  /**
+   * Test building a basic JOIN statement.
+   */
+  public function testJoin() {
+    $tables = ['posts'=>['comments.post_id', 'posts.id']];
+    $result = ' LEFT JOIN posts ON comments.post_id = posts.id';
+    $this->assertEquals($result, SqlBuilder::generateJoinClause($tables));
+  }
 }
