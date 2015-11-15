@@ -8,3 +8,6 @@ install:
   - ./vendor/bin/codecept build
 script:
   - ./vendor/bin/codecept run
+branches:
+  only:
+    - master
