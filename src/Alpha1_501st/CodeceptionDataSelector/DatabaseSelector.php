@@ -44,8 +44,8 @@ class DatabaseSelector extends Db {
    * @return array
    */
   public function query($table, $fields, $conditions, $joins = []) {
-    $join = $this->generateJoinClause($joins);
-    $where = $this->generateWhereClause($conditions);
+    $join = SqlBuilder::generateJoinClause($joins);
+    $where = SqlBuilder::generateWhereClause($conditions);
 
     if (is_array($fields))
       $fields = implode(',', $fields);
@@ -64,53 +64,6 @@ class DatabaseSelector extends Db {
   }
 
   /**
-   * Generate a WHERE clause for a database query.
-   *
-   * @param  array  $criteria The conditions to apply.
-   *
-   * @return string
-   */
-  protected function generateWhereClause(array &$criteria) {
-    if (empty($criteria))
-      return "";
-
-    $where = "WHERE ";
-    foreach ($criteria as $column => $value) {
-      $where .= $column;
-
-      if (is_array($value)) {
-        $where .= " ".$value[0]." ".$value[1];
-      }
-      else {
-        $where .= " = ".$value;
-      }
-
-      $where .= " AND ";
-    }
-
-    return substr($where, 0, -5);
-  }
-
-  /**
-   * Generate LEFT JOIN clauses for a database query.
-   *
-   * @param  array  $criteria The tables to join.
-   *
-   * @return string
-   */
-  protected function generateJoinClause(array &$criteria) {
-    if (empty($criteria))
-      return "";
-
-    $out = "";
-    foreach ($criteria as $table => $fields) {
-      $out .= " LEFT JOIN ".$table." ON ".$fields[0]." = ".$fields[1];
-    }
-
-    return $out;
-  }
-
-  /**
    * Delete some values from the database.
    *
    * @param string $table      The table to delete from.
@@ -122,7 +75,7 @@ class DatabaseSelector extends Db {
       $wheres[$field] = '"'.$value.'"';
     }
 
-    $where = $this->generateWhereClause($wheres);
+    $where = SqlBuilder::generateWhereClause($wheres);
 
     $query = "DELETE FROM %s %s";
 
