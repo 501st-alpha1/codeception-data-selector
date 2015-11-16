@@ -85,6 +85,11 @@ class DataSelector extends Extension {
         $db->delete($value['table'], $value['conditions']);
       }
     }
+    if (isset($this->config['updates'])) {
+      foreach ($this->config['updates'] as $group => $value) {
+        $db->update($value['table'], $value['sets'], $value['conditions']);
+      }
+    }
   }
 }
 
