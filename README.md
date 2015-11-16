@@ -83,3 +83,25 @@ The name for the deletion (e.g. `one`) is not used, but should be unique for in 
 ```sql
 DELETE FROM users WHERE first_name = "Test" AND last_name = "User";
 ```
+
+### Update Modified Data
+
+To reset data that has been modified by a test, do e.g.:
+
+```yaml
+data:
+  ...
+updates:
+  one:
+    table: 'posts'
+    sets:
+      title: '"My Test Post"'
+    conditions:
+      user_id: 1
+```
+
+The name for the update (e.g. `one`) is not used, but should be unique in `updates`. This example will produce the following SQL:
+
+```sql
+UPDATE users SET title = "My Test Post" WHERE user_id = 1;
+```

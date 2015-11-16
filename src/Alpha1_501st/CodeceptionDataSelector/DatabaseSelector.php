@@ -84,6 +84,20 @@ class DatabaseSelector extends Db {
     $pdoStatement = $this->getDbh()->prepare($query);
     $pdoStatement->execute([]);
   }
+
+  /**
+   * Update some values in the database.
+   *
+   * @param string $table    The table to update.
+   * @param array  $sets     The columns/values to update.
+   * @param array  $criteria The criteria to apply the updates to.
+   */
+  public function update($table, $sets, $conditions) {
+    $query = SqlBuilder::generateUpdateStatement($table, $sets, $conditions);
+
+    $pdoStatement = $this->getDbh()->prepare($query);
+    $pdoStatement->execute([]);
+  }
 }
 
 ?>

@@ -42,4 +42,15 @@ class SqlBuilderTest extends \Codeception\TestCase\Test {
     $result = ' LEFT JOIN posts ON comments.post_id = posts.id';
     $this->assertEquals($result, SqlBuilder::generateJoinClause($tables));
   }
+
+  /**
+   * Test building an UPDATE statement.
+   */
+  public function testUpdate() {
+    $sets = ['title'=>'"My Test Post"'];
+    $conditions = ['user_id'=>1];
+    $result = 'UPDATE posts SET title = "My Test Post" WHERE user_id = 1';
+    $actual = SqlBuilder::generateUpdateStatement('posts', $sets, $conditions);
+    $this->assertEquals($result, $actual);
+  }
 }
