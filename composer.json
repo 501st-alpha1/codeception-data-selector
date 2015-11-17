@@ -17,6 +17,7 @@
         "codeception/codeception": "2.0.*"
     },
     "require-dev": {
+        "codeception/aspect-mock": "0.5.*",
         "phpdocumentor/phpdocumentor": "2.*"
     }
 }
