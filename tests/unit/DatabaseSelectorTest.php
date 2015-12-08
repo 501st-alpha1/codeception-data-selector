@@ -13,6 +13,7 @@ class DatabaseSelectorTest extends \Codeception\TestCase\Test {
   }
 
   protected function _after() {
+    test::clean();
   }
 
   public function testQuery() {
