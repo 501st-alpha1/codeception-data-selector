@@ -15,5 +15,5 @@ branches:
 services:
   - mysql
 before_script:
-  - mysql -e 'CREATE DATABASE testdb; CREATE TABLE comments (id INT PRIMARY KEY, content VARCHAR(255), user_id INT);'
+  - mysql -e 'CREATE DATABASE testdb; USE testdb; CREATE TABLE comments (id INT PRIMARY KEY, content VARCHAR(255), user_id INT);'
 # END FIXME
