@@ -63,8 +63,13 @@ class DataSelector extends Extension {
 
       $result = $db->query($value['table'], $value['fields'],
                            $value['conditions'], $joins);
-      foreach ($result as $field => $value) {
-        $data->$group->$field = $value;
+      if (is_array($result)) {
+        foreach ($result as $field => $value) {
+          $data->$group->$field = $value;
+        }
+      }
+      else {
+        throw new \Exception("Empty result for query!");
       }
     }
   }
