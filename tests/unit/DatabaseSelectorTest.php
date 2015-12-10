@@ -40,6 +40,18 @@ class DatabaseSelectorTest extends \Codeception\TestCase\Test {
 
     $builderMock->verifyInvoked('generateWhereClause');
   }
+
+  public function testUpdate() {
+    $update = "UPDATE comments SET content = 'I was modified!'";
+    $builderMock = test::double('Alpha1_501st\CodeceptionDataSelector\SqlBuilder',
+                                ['generateUpdateStatement'=>$update]);
+
+    $db = new DatabaseSelector("mysql:host=localhost;dbname=testdb", "root", "");
+    $ret = $db->update('comments', ['content'=>"I was modified!"],
+                       ['content'=>"Modify me!"]);
+
+    $builderMock->verifyInvoked('generateUpdateStatement');
+  }
 }
 
 ?>
