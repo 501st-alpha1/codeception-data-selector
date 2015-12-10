@@ -28,6 +28,7 @@ class DatabaseSelectorTest extends \Codeception\TestCase\Test {
     $ret = $db->query('comments', 'content', [], []);
 
     $builderMock->verifyInvoked('generateJoinClause');
+    $builderMock->verifyInvoked('generateWhereClause');
   }
 }
 
