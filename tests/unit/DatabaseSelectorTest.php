@@ -30,6 +30,16 @@ class DatabaseSelectorTest extends \Codeception\TestCase\Test {
     $builderMock->verifyInvoked('generateJoinClause');
     $builderMock->verifyInvoked('generateWhereClause');
   }
+
+  public function testDelete() {
+    $builderMock = test::double('Alpha1_501st\CodeceptionDataSelector\SqlBuilder',
+                                ['generateWhereClause'=>""]);
+
+    $db = new DatabaseSelector("mysql:host=localhost;dbname=testdb", "root", "");
+    $ret = $db->delete('comments', ['content'=>"bad comment"]);
+
+    $builderMock->verifyInvoked('generateWhereClause');
+  }
 }
 
 ?>
