@@ -41,6 +41,21 @@ class DatabaseAccessor {
   public function __construct(PDO $pdo) {
     $this->pdo = $pdo;
   }
+
+  /**
+   * Run the given query and return any results.
+   *
+   * @param string $query The query to run.
+   *
+   * @return array|bool Returns either an array of the results, or `false` on
+   *                    error.
+   */
+  public function runQuery($query) {
+    $pdoStatement = $this->pdo->prepare($query);
+    $pdoStatement->execute([]);
+
+    return $pdoStatement->fetchAll();
+  }
 }
 
 ?>
