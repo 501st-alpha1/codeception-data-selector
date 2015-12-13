@@ -8,7 +8,7 @@ install:
   - composer install
   - ./vendor/bin/codecept build
 script:
-  - ./vendor/bin/codecept run
+  - ./vendor/bin/codecept run --coverage --coverage-xml
 branches:
   only:
     - master
@@ -18,3 +18,5 @@ services:
 before_script:
   - mysql -e 'CREATE DATABASE testdb; USE testdb; CREATE TABLE comments (id INT PRIMARY KEY, content VARCHAR(255), user_id INT);'
 # END FIXME
+after_script:
+  - travis_retry php vendor/bin/coveralls

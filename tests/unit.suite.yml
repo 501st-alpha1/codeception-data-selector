@@ -2,5 +2,11 @@
 
 # suite for unit (internal) tests.
 class_name: UnitTester
+coverage:
+    enabled: true
+    remote: false
+    whitelist:
+        include:
+            - src/*
 modules:
     enabled: [Asserts, UnitHelper]
