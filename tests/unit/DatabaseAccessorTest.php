@@ -26,5 +26,9 @@ class DatabaseAccessorTest extends \Codeception\TestCase\Test {
 
     $db = new DatabaseAccessor($pdo);
     $db->runQuery($query);
+
+    $pdoMock->verifyInvoked('prepare', [$query]);
+    $pdoStatementMock->verifyInvoked('execute');
+    $pdoStatementMock->verifyInvoked('fetchAll');
   }
 }
