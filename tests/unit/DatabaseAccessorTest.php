@@ -17,11 +17,13 @@ class DatabaseAccessorTest extends \Codeception\TestCase\Test {
   }
 
   public function testQuery() {
-    $pdoStatementMock = test::double('PDOStatement', ['execute'=>null, 'fetch'=>null]);
-    $pdoMock = test::double('PDO', ['__construct'=>null, 'prepare'=>$pdoStatementMock]);
+    $pdoStatementMock = test::double('PDOStatement',
+                                     ['execute'=>null, 'fetch'=>null]);
+    $pdoMock = test::spec('MyPDO',
+                          ['__construct'=>null, 'prepare'=>$pdoStatementMock]);
 
-    $pdo = new PDO("");
+    $pdo = $pdoMock->construct();
 
-    $db = new DatabaseAccessor();
+    $db = new DatabaseAccessor($pdo);
   }
 }
