@@ -19,8 +19,7 @@ class DatabaseAccessorTest extends \Codeception\TestCase\Test {
   public function testQuery() {
     $pdoStatementMock = test::double('PDOStatement',
                                      ['execute'=>null, 'fetch'=>null]);
-    $pdoMock = test::spec('MyPDO',
-                          ['__construct'=>null, 'prepare'=>$pdoStatementMock]);
+    $pdoMock = test::spec('MyPDO', ['prepare'=>$pdoStatementMock]);
     $query = "SELECT * FROM users";
 
     $pdo = $pdoMock->construct();
